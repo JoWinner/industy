@@ -5,19 +5,19 @@ import { ChevronLeft, ChevronRight,Dot } from 'lucide-react';
 const ImageSlider = () => {
   const slides = [
     {
-      url: '/images/coffee.jpg',
+      url: '/images/hero-01',
       title: 'Lobster',
     },
     {
-      url: 'https://images.unsplash.com/photo-1512132411229-c30391241dd8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+      url: '/images/hero-02',
       title: 'Sushi',
     },
     {
-      url: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+      url: '/images/hero-03',
       title: 'Pasta',
     },
     {
-      url: 'https://images.unsplash.com/photo-1539136788836-5699e78bfc75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+      url: '/images/hero-04',
       title: 'Salmon',
     },
   ];

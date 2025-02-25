@@ -1,18 +1,15 @@
-import OperationsInfo from "./components/operations-info"
-import OperationsBanner from "./components/operations-banner"
-import OperationsGrid from "./components/operations-grid"
-import OperationsFeatureTop from "./components/operations-feature-top"
-
+import OperationsBanner from "./components/operations-banner";
+import OperationsGrid from "./components/operations-grid";
+import ProcessSection from "./components/process-section";
 
 const OperationsPage = () => {
   return (
     <>
       <OperationsBanner />
-      <OperationsInfo />
-      <OperationsFeatureTop/>
-      <OperationsGrid/>
+      <OperationsGrid />
+      <ProcessSection />
     </>
-  )
+  );
 }
 
-export default OperationsPage
+export default OperationsPage;

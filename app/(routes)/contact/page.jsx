@@ -1,16 +1,15 @@
-import ContactBanner from "./components/contact-banner"
-import ContactForm from "./components/contact-form"
-import ImageSlider from "./components/image-slider"
-
+import ContactBanner from "./components/contact-banner";
+import ContactForm from "./components/contact-form";
+import FAQSection from "./components/faq-section";
 
 const ContactPage = () => {
   return (
     <>
-      <ContactBanner/>
-      <ContactForm/>
-     <ImageSlider/> 
+      <ContactBanner />
+      <ContactForm />
+      <FAQSection />
     </>
-  )
+  );
 }
 
-export default ContactPage
+export default ContactPage;

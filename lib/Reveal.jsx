@@ -1,62 +1,47 @@
 "use client"
-import { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
 
-export const Reveal = ({
-  children,
-  width = "fit-content",
-  childTransition,
-  childStyle,
-}) => {
-  const mainControls = useAnimation();
-  const slideControls = useAnimation();
+import React from "react"
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+import { useEffect, useRef } from "react"
 
-  useEffect(() => {
-    if (isInView) {
-      slideControls.start("visible");
-      mainControls.start("visible");
-    } else {
-      slideControls.start("hidden");
-      mainControls.start("hidden");
-    }
-  }, [isInView, mainControls, slideControls]);
+export const Reveal = ({ children }) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref)
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        initial="hidden"
-        animate={mainControls}
-        transition={{ ...childTransition }}
-        // transition={{ duration: 1, delay: 0.7, ...childTransition }}
-      >
-        {children}
-      </motion.div>
-      <motion.div
-        variants={{
-          hidden: { left: 0 },
-          visible: { left: "100%" },
-        }}
-        initial="hidden"
-        animate={slideControls}
-        transition={{ duration: 0.8,  ease: "easeIn" }}
-        style={{
-          position: "absolute",
-          top: 4,
-          bottom: 4,
-          left: 0,
-          right: 0,
-          // background: "var(--brand)",
-          zIndex: 20,
-          ...childStyle,
-        }}
-      />
+    <div
+      ref={ref}
+      style={{
+        opacity: isInView ? 1 : 0,
+        transform: isInView ? "translateY(0)" : "translateY(50px)",
+        transition: "all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s",
+      }}
+    >
+      {children}
     </div>
-  );
-};
+  )
+}
+
+function useInView(ref) {
+  const [isIntersecting, setIsIntersecting] = React.useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting)
+      },
+      {
+        rootMargin: "-50px",
+      },
+    )
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+    return () => {
+      observer.unobserve(ref.current)
+    }
+  }, [ref])
+
+  return isIntersecting
+}
+

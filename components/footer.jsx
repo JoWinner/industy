@@ -1,76 +1,108 @@
+import Link from "next/link";
 import {
-    Facebook,
-    Github,
-    Instagram,
-    Twitter,
-    Twitch,
-} from 'lucide-react'
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Mail,
+} from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className='w-full mt-24 bg-[#040e26] text-gray-300 py-y px-2'>
-        <div className='max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-6 border-b-2 border-gray-600 py-8'>
-            <div>
-                <h6 className='font-bold uppercase pt-2'>Solutions</h6>
-                <ul>
-                    <li className='py-1'>Marketing</li>
-                    <li className='py-1'>Analytics</li>
-                    <li className='py-1'>Commerce</li>
-                    <li className='py-1'>Data</li>
-                    <li className='py-1'>Cloud</li>
-                </ul>
+    <footer className="bg-[#040e26] text-gray-300">
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Company Info */}
+          <div>
+            <h3 className="footer-title">About Us</h3>
+            <p className="text-gray-400 mb-4">
+              Green-Hive Trading Company Ltd specializes in providing premium quality cocoa beans to manufacturers worldwide, ensuring sustainable and ethical sourcing practices.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="footer-link">
+                <Facebook size={20} />
+              </a>
+              <a href="#" className="footer-link">
+                <Instagram size={20} />
+              </a>
+              <a href="#" className="footer-link">
+                <Twitter size={20} />
+              </a>
+              <a href="#" className="footer-link">
+                <Linkedin size={20} />
+              </a>
             </div>
-            <div>
-                <h6 className='font-bold uppercase pt-2'>Support</h6>
-                <ul>
-                    <li className='py-1'>Pricing</li>
-                    <li className='py-1'>Documentation</li>
-                    <li className='py-1'>Guides</li>
-                    <li className='py-1'>API Status</li>
-                </ul>
-            </div>
-            <div>
-                <h6 className='font-bold uppercase pt-2'>Company</h6>
-                <ul>
-                    <li className='py-1'>About</li>
-                    <li className='py-1'>Blog</li>
-                    <li className='py-1'>Jobs</li>
-                    <li className='py-1'>Press</li>
-                    <li className='py-1'>Partners</li>
-                </ul>
-            </div>
-            <div>
-                <h6 className='font-bold uppercase pt-2'>Legal</h6>
-                <ul>
-                    <li className='py-1'>Claims</li>
-                    <li className='py-1'>Privacy</li>
-                    <li className='py-1'>Terms</li>
-                    <li className='py-1'>Policies</li>
-                    <li className='py-1'>Conditions</li>
-                </ul>
-            </div>
-            <div className='col-span-2 pt-8 md:pt-2'>
-                <p className='font-bold uppercase'>Subscribe to our newsletter</p>
-                <p className='py-4'>The latest news, articles, and resources, sent to your inbox weekly.</p>
-                <form className='flex flex-col sm:flex-row'>
-                    <input className='w-full p-2 mr-4 rounded-md mb-4' type="email" placeholder='Enter email..'/>
-                    <button className='p-2 mb-4'>Subscribe</button>
-                </form>
-            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="footer-title">Quick Links</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/our-story" className="footer-link">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/our-operations" className="footer-link">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="footer-link">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="footer-link">
+                  Privacy Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="footer-title">Contact Us</h3>
+            <ul className="space-y-3 text-gray-400">
+              <li>123 Business Street</li>
+              <li>Okla States, 12345</li>
+              <li>Phone: +1 234 567 8900</li>
+              <li>Email: info@greenroots.com</li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="footer-title">Newsletter</h3>
+            <p className="text-gray-400 mb-4">
+              Subscribe to our newsletter for updates and insights.
+            </p>
+            <form className="space-y-3">
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 focus:outline-none focus:border-[#fc5e28]"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-[#fc5e28] text-white hover:bg-[#e54d1f] transition-colors duration-300"
+                >
+                  <Mail size={20} />
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
 
-        <div className='flex flex-col max-w-[1240px] px-2 py-4 mx-auto justify-between sm:flex-row text-center text-gray-500'>
-        <p className='py-4'>2022 Workflow, LLC. All rights reserved</p>
-        <div className='flex justify-between sm:w-[300px] pt-4 text-2xl'>
-            <Facebook />
-            <Instagram />
-            <Twitter />
-            <Twitch />
-            <Github />
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <p>© {new Date().getFullYear()} Green-Hive Trading Company Ltd. All rights reserved.</p>
         </div>
-        </div>
-    </div>
-  )
-}
+      </div>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;

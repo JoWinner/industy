@@ -8,7 +8,7 @@ const Info = () => {
         <div className="row-span-3 aspect-square relative w-full h-full ">
           <Image
             className=" aspect-square object-cover transform hover:translate-y-2 duration-500 transition-transform shadow-xl "
-            src="/images/info1.jpg"
+            src="/images/cocoa-1.png"
             alt="/"
             fill
           />
@@ -16,7 +16,7 @@ const Info = () => {
         <div className="row-span-2 aspect-square relative w-full h-full ">
           <Image
             className=" aspect-square object-cover p-2 transform hover:-translate-x-2 duration-500 transition-transform  "
-            src="/images/info2.jpg"
+            src="/images/cocoa.png"
             alt="/"
             fill
           />
@@ -24,7 +24,7 @@ const Info = () => {
         <div className="row-span-2 aspect-square relative w-full h-full p-2">
           <Image
             className=" aspect-square object-cover transform hover:translate-y-2 duration-500 transition-transform shadow-xl "
-            src="/images/info3.jpg"
+            src="/images/soy.jpg"
             alt="/"
             fill
           />
@@ -32,7 +32,7 @@ const Info = () => {
         <div className="row-span-3 aspect-square relative w-full h-full">
           <Image
             className=" aspect-square object-cover p-2 transform hover:-translate-y-2 duration-500 transition-transform"
-            src="/images/info4.jpg"
+            src="/images/cashew.jpg"
             alt="/"
             fill
           />
@@ -40,7 +40,7 @@ const Info = () => {
         <div className="row-span-2 aspect-square relative w-full h-full">
           <Image
             className=" aspect-square object-cover p-2 transform hover:-translate-x-2 duration-500 transition-transform"
-            src="/images/info5.jpg"
+            src="/images/coffee.png"
             alt="/"
             fill
           />
@@ -48,22 +48,25 @@ const Info = () => {
       </div>
       {/* Right Side */}
       <div className="flex flex-col h-full justify-center text-left">
-        <h3 className="text-5xl text-[#040e26] md:text-6xl font-bold">Global Cocoa Beans Suppliers </h3>
-        <p className="text-xl uppercase font-semibold text-[#fc5e28] py-3">
-          Welcome to the Green Hive Trading Company Ltd.
-        </p>
+        <h3 className="section-title">
+          We Supply Cocoa, Cashew, Coffee, Soybeans
+        </h3>
+
         <p className="pb-6 text-lg text-gray-500 font-medium">
-          We are here to help Manufacturing Companies around the world access supplies of premium quality cocoa beans.
-          Our Cocoa is well researched and tested sustainably, and as global bean suppliers,
-          we ensure all our supplies are traceable and enthically sourced.
-          With this approach, it means our cocoa is ready for manufacturing and products due diligence legislation across consumer markets in Europe and North America.
+          We are here to help Manufacturing Companies around the world access
+          supplies of premium quality cash crops. Our Cash Crops are well researched
+          and tested sustainably, and as global bean suppliers, we ensure all
+          our supplies are traceable and ethically sourced. With this approach,
+          it means our cash crop is ready for manufacturing and products due
+          diligence legislation across consumer markets in Europe and North
+          America.
         </p>
         <div>
-          <button className="bg-[#fc5e28] p-3 text-[#040e26] mr-4 hover:shadow-xl transition-all duration-500 font-medium">
+          <button className="bg-[#4CAF50] p-3 text-[#040e26] mr-4 hover:shadow-xl transition-all duration-500 font-medium">
             Operations
           </button>
           <button className="bg-[#040e26] p-3 text-white  hover:shadow-xl transition-all duration-500 font-medium">
-            Book us now?
+            Tracking
           </button>
         </div>
       </div>

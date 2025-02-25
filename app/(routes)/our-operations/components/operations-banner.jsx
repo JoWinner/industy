@@ -2,22 +2,27 @@ import Image from "next/image";
 
 const OperationsBanner = () => {
   return (
-    <div className="w-full h-[200px] pt-16 bg-[#fc5e28]">
-      <div className="aspect-square relative w-full  h-[150px] ">
+    <div className="relative h-[40vh] w-full overflow-hidden">
+      <div className="absolute inset-0">
         <Image
-          src="/images/02.jpg"
-          alt="/"
+          src="/images/operations.png"
+          alt="Operations Banner"
           fill
-          className="aspect-square object-cover"
+          className="object-cover"
+          priority
         />
+        <div className="absolute inset-0 hero-overlay" />
       </div>
-      <div className="bg-black/30 mt-16 absolute top-0 left-0 w-full h-[150px]" />
-      <div className="absolute top-16 w-full h-[150px] flex flex-col justify-center text-white">
-        <div className="md:left-[10%] max-w-[1100px] m-auto absolute p-4">
-          <h1 className="font-bold text-5xl drop-shadow-2xl">How we operate</h1>
-          <p className="max-w-[600px] p-3 text-gray-200 text-lg font-bold backdrop-blur-sm bg-black/50">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo ut quis
-          </p>
+      <div className="relative h-full flex items-center">
+        <div className="max-w-7xl mx-auto px-4 w-full pt-20">
+          <div className="max-w-3xl animate-fadeIn">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+              Our Operations
+            </h1>
+            <p className="text-lg md:text-xl text-gray-200 max-w-2xl">
+              Discover how we maintain excellence in every step of our Cash crop trading process.
+            </p>
+          </div>
         </div>
       </div>
     </div>

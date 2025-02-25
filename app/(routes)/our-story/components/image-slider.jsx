@@ -5,20 +5,20 @@ import { ChevronLeft, ChevronRight,Dot } from 'lucide-react';
 const ImageSlider = () => {
   const slides = [
     {
-      url: '/images/coffee.jpg',
-      title: 'Coffee',
+      url: '/images/supply.jpg',
+      title: 'Awards',
     },
     {
-      url: '/images/02.jpg',
-      title: 'Cocoa',
+      url: '/images/logistics.png',
+      title: 'Shipment',
     },
     {
-      url: '/images/slide01.jpg',
+      url: '/images/cashews-02.webp',
+      title: 'Cashew',
+    },
+    {
+      url: '/images/feritech.jpg',
       title: 'Pasta',
-    },
-    {
-      url: '/images/Pineapple.jpeg',
-      title: 'Pineapple',
     },
   ];
 
