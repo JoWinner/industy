@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef } from "react";
 
 export const Reveal = ({ children }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref)
+  const ref = useRef(null);
+  const isInView = useInView(ref);
 
   return (
     <div
@@ -19,29 +19,30 @@ export const Reveal = ({ children }) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 function useInView(ref) {
-  const [isIntersecting, setIsIntersecting] = React.useState(false)
+  const [isIntersecting, setIsIntersecting] = React.useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsIntersecting(entry.isIntersecting)
+        setIsIntersecting(entry.isIntersecting);
       },
       {
         rootMargin: "-50px",
-      },
-    )
+      }
+    );
     if (ref.current) {
-      observer.observe(ref.current)
+      observer.observe(ref.current);
     }
     return () => {
-      observer.unobserve(ref.current)
-    }
-  }, [ref])
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [ref]);
 
-  return isIntersecting
+  return isIntersecting;
 }
-
