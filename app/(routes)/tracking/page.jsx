@@ -71,11 +71,11 @@ const TrackingPage = () => {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <Reveal>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#4CAF50] mb-4">
               Track Your Shipment
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Enter your tracking number to get real-time updates on your cocoa shipment
+              Enter your tracking number to get real-time updates on your shipment
             </p>
           </Reveal>
         </div>

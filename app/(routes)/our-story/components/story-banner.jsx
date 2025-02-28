@@ -20,7 +20,7 @@ const StoryBanner = () => {
               Our Story
             </h1>
             <p className="text-lg md:text-xl text-gray-200 max-w-2xl">
-              Discover the journey of Green Roots Trading Company Ltd and our commitment to sustainable trading.
+              Discover the journey of Greenroots Trading and our commitment to cash crop trading.
             </p>
           </div>
         </div>

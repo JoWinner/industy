@@ -5,12 +5,12 @@ const values = [
   {
     icon: Target,
     title: "Our Mission",
-    description: "To provide the highest quality cocoa beans while promoting sustainable farming practices and supporting local communities."
+    description: "To provide the highest quality cash crops while promoting sustainable farming practices and supporting local communities."
   },
   {
     icon: Heart,
     title: "Our Vision",
-    description: "To become the world's leading sustainable cocoa trading company, setting industry standards for quality and ethical practices."
+    description: "To become the world's leading sustainable crop trading company, setting industry standards for quality and ethical practices."
   },
   {
     icon: Shield,
@@ -20,7 +20,7 @@ const values = [
   {
     icon: Users,
     title: "Our People",
-    description: "A diverse team of experts passionate about cocoa, sustainability, and creating positive impact in the industry."
+    description: "A diverse team of experts passionate about cash crops sustainability, and creating positive impact in the industry."
   }
 ];
 

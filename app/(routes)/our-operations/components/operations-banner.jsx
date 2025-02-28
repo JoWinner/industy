@@ -20,7 +20,7 @@ const OperationsBanner = () => {
               Our Operations
             </h1>
             <p className="text-lg md:text-xl text-gray-200 max-w-2xl">
-              Discover how we maintain excellence in every step of our Cash crop trading process.
+              Discover how we maintain excellence in every step of our cash crop trading process.
             </p>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link"
 
 const Info = () => {
   return (
@@ -54,20 +55,24 @@ const Info = () => {
 
         <p className="pb-6 text-lg text-gray-500 font-medium">
           We are here to help Manufacturing Companies around the world access
-          supplies of premium quality cash crops. Our Cash Crops are well researched
+          supplies of premium quality cash crops. Our cash crops are well researched
           and tested sustainably, and as global bean suppliers, we ensure all
           our supplies are traceable and ethically sourced. With this approach,
           it means our cash crop is ready for manufacturing and products due
           diligence legislation across consumer markets in Europe and North
           America.
         </p>
-        <div>
-          <button className="bg-[#4CAF50] p-3 text-[#040e26] mr-4 hover:shadow-xl transition-all duration-500 font-medium">
+        <div className="flex flex-row gap-4 items-center">
+          <Link href="/our-operations">
+          <button className="btn-primary">
             Operations
           </button>
-          <button className="bg-[#040e26] p-3 text-white  hover:shadow-xl transition-all duration-500 font-medium">
+          </Link>
+          <Link href="/tracking">
+          <button className="bg-[#040e26] p-3 text-white hover:bg-slate-800  font-medium">
             Tracking
           </button>
+          </Link>
         </div>
       </div>
     </div>

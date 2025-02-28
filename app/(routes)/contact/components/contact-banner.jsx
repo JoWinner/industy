@@ -2,20 +2,25 @@ import Image from "next/image";
 
 const ContactBanner = () => {
   return (
-    <div className="w-full h-[350px] pt-16 bg-[#fc5e28]">
-      <div className="aspect-square relative w-full  h-[350px] ">
+    <div className="relative h-[40vh] w-full overflow-hidden">
+      <div className="absolute inset-0">
         <Image
-          src="/images/01.jpg"
-          alt="/"
+          src="/images/support-01.png"
+          alt="Contact Banner"
           fill
-          className="aspect-square object-cover"
+          className="object-cover"
+          priority
         />
+        <div className="absolute inset-0 hero-overlay" />
       </div>
-      <div className="bg-black/30 mt-16 absolute top-0 left-0 w-full h-[350px]" />
-      <div className="absolute top-16 w-full h-[350px] flex flex-col justify-center items-center text-white">
-        <div className=" max-w-[1100px]  m-auto absolute p-4">
-          <h1 className="font-bold text-5xl drop-shadow-2xl">Don&apos;t hesitate to reach out to us.</h1>
-          
+      <div className="relative h-full flex items-center">
+        <div className="max-w-7xl mx-auto px-4 w-full pt-20">
+          <div className="max-w-3xl animate-fadeIn">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+              Don&apos;t hesitate to reach out
+            </h1>
+            
+          </div>
         </div>
       </div>
     </div>

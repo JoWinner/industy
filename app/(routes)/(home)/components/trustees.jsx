@@ -6,11 +6,11 @@ const Trustees = () => {
     { src: "/images/esa.webp", width: "w-[180px]" },
     { src: "/images/cmacgm.webp", width: "w-[150px]" },
     { src: "/images/cosco.png", width: "w-[150px]" },
-    { src: "/images/ecom.png", width: "w-[150px]" },
+    { src: "/images/maersk.png", width: "w-[180px]" },
     { src: "/images/sfc.png", width: "w-[180px]" },
-    { src: "/images/lavazza.png", width: "w-[150px]" },
+    { src: "/images/ferrerorocher.png", width: "w-[150px]" },
     { src: "/images/engcoffee.png", width: "w-[150px]" },
-    { src: "/images/costa.png", width: "w-[200px]" },
+    { src: "/images/costa.png", width: "w-[180px]" },
     { src: "/images/danone.png", width: "w-[200px]" },
   ];
 

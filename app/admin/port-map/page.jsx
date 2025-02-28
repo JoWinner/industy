@@ -45,7 +45,7 @@ const PortMap = () => {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pt-8">
       <Reveal>
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Global Port Network</h1>
       </Reveal>

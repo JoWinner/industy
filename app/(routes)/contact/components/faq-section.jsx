@@ -10,14 +10,14 @@ const faqs = [
   },
   {
     question: "What are your minimum order quantities?",
-    answer: "Our minimum order quantities vary depending on the type of cocoa beans and your specific requirements. Please contact our sales team for detailed information."
+    answer: "Our minimum order quantities vary depending on the type of cash crop and your specific requirements. Please contact us anytime team for detailed information."
   },
   {
     question: "Do you provide samples before bulk orders?",
     answer: "Yes, we provide samples to qualified buyers. This allows you to assess the quality of our cocoa beans before placing larger orders."
   },
   {
-    question: "What certifications do your cocoa beans have?",
+    question: "What certifications do your cash crops have?",
     answer: "Our cocoa beans are certified by various international standards including Fair Trade, Organic, and Rainforest Alliance. We can provide specific certification details upon request."
   },
   {

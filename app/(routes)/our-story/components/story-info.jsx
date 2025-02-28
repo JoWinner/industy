@@ -8,12 +8,12 @@ const StoryInfo = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <Reveal>
-              <h2 className="section-title">About Greenroots Trading Company Ltd</h2>
+              <h2 className="section-title">About Greenroots Trading</h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Greenroots Trading Company Ltd exists to facilitate and improve cocoa trade transactions between our company and clients across the world. We create a conducive platform through which our clients interface with us.
+                Greenroots Trading exists to facilitate and improve cash crop trade transactions between our company and clients across the world. We create a conducive platform through which our clients interface with us.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Our uniqueness lies in the excellent supply of premium quality cocoa beans, making us stand tall in the global cocoa economy. We are committed to creating value through excellent cocoa trade systems.
+                Our uniqueness lies in the excellent supply of premium quality cocoa beans, cashew, coffee and soybeans, making us stand tall in the global cash crop trading economy. We are committed to creating value through excellent trade systems.
               </p>
             </Reveal>
           </div>

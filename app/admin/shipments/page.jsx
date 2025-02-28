@@ -20,7 +20,7 @@ const ShipmentsPage = () => {
   ]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pt-8">
       <Reveal>
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">Shipments</h1>
@@ -35,7 +35,7 @@ const ShipmentsPage = () => {
         <div className="bg-white rounded-lg shadow">
           <div className="p-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-gray-900">All Shipments</h2>
+              <h2 className="hidden md:flex text-xl font-bold text-gray-900">All Shipments</h2>
               <div className="flex space-x-2">
                 <input
                   type="text"
