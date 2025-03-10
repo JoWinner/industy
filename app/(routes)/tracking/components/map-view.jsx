@@ -10,6 +10,34 @@ const MapView = ({ shipment }) => {
     width: "100%"
   };
 
+  // Custom marker icons
+  const markerIcons = {
+    origin: {
+      url: "data:image/svg+xml;base64," + btoa(`
+        <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="40" fill="#4CAF50" stroke="white" stroke-width="8"/>
+        </svg>
+      `),
+      scaledSize: { width: 20, height: 20 }
+    },
+    destination: {
+      url: "data:image/svg+xml;base64," + btoa(`
+        <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="40" fill="#1B5E20" stroke="white" stroke-width="8"/>
+        </svg>
+      `),
+      scaledSize: { width: 20, height: 20 }
+    },
+    current: {
+      url: "data:image/svg+xml;base64," + btoa(`
+        <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,10 90,90 50,70 10,90" fill="#4CAF50" stroke="white" stroke-width="4"/>
+        </svg>
+      `),
+      scaledSize: { width: 24, height: 24 }
+    }
+  };
+
   return (
     <div className="mb-8 rounded-lg overflow-hidden">
       <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
@@ -26,14 +54,7 @@ const MapView = ({ shipment }) => {
               name: shipment.origin.name,
               type: "Origin"
             })}
-            icon={{
-              path: google.maps.SymbolPath.CIRCLE,
-              scale: 8,
-              fillColor: "#4CAF50",
-              fillOpacity: 1,
-              strokeColor: "#ffffff",
-              strokeWeight: 2,
-            }}
+            icon={markerIcons.origin}
           />
 
           {/* Destination Marker */}
@@ -44,14 +65,7 @@ const MapView = ({ shipment }) => {
               name: shipment.destination.name,
               type: "Destination"
             })}
-            icon={{
-              path: google.maps.SymbolPath.CIRCLE,
-              scale: 8,
-              fillColor: "#1B5E20",
-              fillOpacity: 1,
-              strokeColor: "#ffffff",
-              strokeWeight: 2,
-            }}
+            icon={markerIcons.destination}
           />
 
           {/* Current Location Marker */}
@@ -62,15 +76,7 @@ const MapView = ({ shipment }) => {
               name: shipment.currentLocation.name,
               type: "Current Location"
             })}
-            icon={{
-              path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-              scale: 6,
-              fillColor: "#4CAF50",
-              fillOpacity: 1,
-              strokeColor: "#ffffff",
-              strokeWeight: 2,
-              rotation: 45,
-            }}
+            icon={markerIcons.current}
           />
 
           {/* Route Line */}
