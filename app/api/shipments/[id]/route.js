@@ -18,28 +18,29 @@ export async function PUT(req, { params }) {
     const { id } = params;
     const body = await req.json();
 
-    // Validate ports exist
-    if (body.originPortId || body.destPortId) {
-      const [originPort, destPort] = await Promise.all([
-        body.originPortId ? prisma.port.findUnique({ where: { id: body.originPortId } }) : null,
-        body.destPortId ? prisma.port.findUnique({ where: { id: body.destPortId } }) : null
-      ]);
-
-      if ((body.originPortId && !originPort) || (body.destPortId && !destPort)) {
-        return NextResponse.json(
-          { error: "Invalid port selection" },
-          { status: 400 }
-        );
-      }
-    }
+    // Extract only the fields that can be updated
+    const {
+      trackingNumber,
+      status,
+      origin,
+      destination,
+      departureDate,
+      arrivalDate,
+      containerNumber,
+      route
+    } = body;
 
     const shipment = await prisma.shipment.update({
       where: { id },
       data: {
-        ...body,
-        departureDate: body.departureDate ? new Date(body.departureDate) : undefined,
-        arrivalDate: body.arrivalDate ? new Date(body.arrivalDate) : undefined,
-        route: body.route || undefined
+        trackingNumber,
+        status,
+        origin,
+        destination,
+        departureDate: new Date(departureDate),
+        arrivalDate: new Date(arrivalDate),
+        containerNumber,
+        route
       },
       include: {
         originPort: true,

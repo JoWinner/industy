@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Urbanist } from "next/font/google";
-import { Providers } from "./providers";
+import Providers from "./providers";
 import Script from 'next/script';
 
 const font = Urbanist({ subsets: ["latin"] });

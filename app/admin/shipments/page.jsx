@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { Plus } from "lucide-react";
 import { Reveal } from "@/lib/Reveal";
 import ShipmentTable from "../components/shipment-table";
-import ShipmentModal from "../components/modals/shipment-modal";
+import CreateShipmentModal from "../components/modals/create-shipment-modal";
+import EditShipmentModal from "../components/modals/edit-shipment-modal";
+import ViewShipmentModal from "../components/modals/view-shipment-modal";
 import UpdateStatusModal from "../components/modals/update-status-modal";
 
 const ShipmentsPage = () => {
@@ -93,16 +95,23 @@ const ShipmentsPage = () => {
     }
   };
 
+  const handleOpenModal = (type, shipment = null) => {
+    setSelectedShipment(shipment);
+    setModalType(type);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedShipment(null);
+    setModalType(null);
+  };
+
   return (
     <div className="space-y-6 pt-8">
       <Reveal>
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">Shipments</h1>
           <button
-            onClick={() => {
-              setSelectedShipment(null);
-              setModalType("create");
-            }}
+            onClick={() => handleOpenModal("create")}
             className="btn-primary flex items-center space-x-2"
           >
             <Plus className="w-5 h-5" />
@@ -130,44 +139,46 @@ const ShipmentsPage = () => {
                 />
                 <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                   <option value="">All Status</option>
-                  <option value="PENDING">Pending</option>
-                  <option value="IN_TRANSIT">In Transit</option>
-                  <option value="DELIVERED">Delivered</option>
-                  <option value="DELAYED">Delayed</option>
+                  <option value="DEPARTED_PORT">Departed Port</option>
+                  <option value="CUSTOMS_CLEARANCE">Customs Clearance</option>
+                  <option value="ARRIVED_PORT">Arrived at Port</option>
+                  <option value="PICKED_UP">Picked Up</option>
                 </select>
               </div>
             </div>
             <ShipmentTable
               shipments={shipments}
-              onView={(shipment) => {
-                setSelectedShipment(shipment);
-                setModalType("view");
-              }}
-              onEdit={(shipment) => {
-                setSelectedShipment(shipment);
-                setModalType("edit");
-              }}
-              onUpdateStatus={(shipment) => {
-                setSelectedShipment(shipment);
-                setModalType("status");
-              }}
+              onView={(shipment) => handleOpenModal("view", shipment)}
+              onEdit={(shipment) => handleOpenModal("edit", shipment)}
+              onUpdateStatus={(shipment) => handleOpenModal("status", shipment)}
               onDelete={handleDeleteShipment}
             />
           </div>
         </div>
       </Reveal>
 
-      <ShipmentModal
-        isOpen={modalType === "create" || modalType === "edit" || modalType === "view"}
-        onClose={() => setModalType(null)}
+      <CreateShipmentModal
+        isOpen={modalType === "create"}
+        onClose={handleCloseModal}
+        onSubmit={handleCreateShipment}
+      />
+
+      <EditShipmentModal
+        isOpen={modalType === "edit"}
+        onClose={handleCloseModal}
         shipment={selectedShipment}
-        mode={modalType}
-        onSubmit={modalType === "create" ? handleCreateShipment : handleUpdateShipment}
+        onSubmit={handleUpdateShipment}
+      />
+
+      <ViewShipmentModal
+        isOpen={modalType === "view"}
+        onClose={handleCloseModal}
+        shipment={selectedShipment}
       />
 
       <UpdateStatusModal
         isOpen={modalType === "status"}
-        onClose={() => setModalType(null)}
+        onClose={handleCloseModal}
         shipment={selectedShipment}
         onSubmit={handleUpdateStatus}
       />
