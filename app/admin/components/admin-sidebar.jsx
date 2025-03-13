@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
 import {
   LayoutDashboard,
   Ship,
@@ -20,8 +21,12 @@ const AdminSidebar = () => {
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { name: "Shipments", href: "/admin/shipments", icon: Ship },
     { name: "Port Map", href: "/admin/port-map", icon: Map },
-    // { name: "Settings", href: "/admin/settings", icon: Settings },
+    { name: "Settings", href: "/admin/settings", icon: Settings },
   ];
+
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: "/admin/login" });
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -61,7 +66,10 @@ const AdminSidebar = () => {
       </nav>
 
       <div className="flex items-center px-4 py-4 border-t">
-        <button className="flex items-center w-full px-4 py-2 text-sm font-medium text-gray-600 rounded-lg hover:text-primary hover:bg-primary/5">
+        <button
+          onClick={handleLogout}
+          className="flex items-center w-full px-4 py-2 text-sm font-medium text-gray-600 rounded-lg hover:text-primary hover:bg-primary/5"
+        >
           <LogOut className="w-5 h-5 mr-3" />
           Logout
         </button>

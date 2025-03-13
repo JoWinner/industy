@@ -1,22 +1,51 @@
-import { redirect } from "next/navigation";
+"use client";
+import { useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 import AdminSidebar from "./components/admin-sidebar";
+import { Loader2 } from "lucide-react";
 
-export default async function AdminLayout({ children }) {
-  // TODO: Add proper authentication
-  const isAuthenticated = true;
+export default function AdminLayout({ children }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const { data: session, status } = useSession();
 
-  if (!isAuthenticated) {
-    redirect("/admin/login");
+  useEffect(() => {
+    if (status === "unauthenticated" && pathname !== "/admin/login") {
+      router.push("/admin/login");
+    } else if (session?.user?.role !== "ADMIN" && pathname !== "/admin/login") {
+      router.push("/"); // Redirect non-admin users to home
+    }
+  }, [session, status, router, pathname]);
+
+  // Don't show loading state on login page
+  if (pathname === "/admin/login") {
+    return children;
   }
 
-  return (
-    <div className="flex h-screen bg-gray-100">
-      <AdminSidebar />
-      <main className="flex-1 overflow-y-auto">
-        <div className="container mx-auto px-6 py-8">
-          {children}
-        </div>
-      </main>
-    </div>
-  );
+  // Show loading state while checking authentication
+  if (status === "loading") {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  // Only render admin layout if user is authenticated and is an admin
+  if (status === "authenticated" && session?.user?.role === "ADMIN") {
+    return (
+      <div className="flex h-screen bg-gray-100">
+        <AdminSidebar />
+        <main className="flex-1 overflow-y-auto">
+          <div className="container mx-auto px-6 py-8">
+            {children}
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // Return null while redirecting
+  return null;
 }
