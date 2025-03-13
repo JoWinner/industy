@@ -54,15 +54,7 @@ const ContactForm = () => {
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Contact Information */}
           <div className="lg:col-span-1 space-y-8">
-            <div className="flex items-start space-x-4">
-              <div className="bg-primary p-3 rounded-lg text-white">
-                <MapPin size={24} />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Our Location</h3>
-                <p className="text-gray-600">123 Business Street, Okla States, 12345</p>
-              </div>
-            </div>
+            
 
             <div className="flex items-start space-x-4">
               <div className="bg-primary p-3 rounded-lg text-white">
@@ -70,7 +62,7 @@ const ContactForm = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Phone Number</h3>
-                <p className="text-gray-600">+1 234 567 8900</p>
+                <p className="text-gray-600">+44 751 6523 050</p>
               </div>
             </div>
 
@@ -80,7 +72,7 @@ const ContactForm = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Email Address</h3>
-                <p className="text-gray-600">info@greenroots.com</p>
+                <p className="text-gray-600">info@greenrootstrading.com</p>
               </div>
             </div>
           </div>

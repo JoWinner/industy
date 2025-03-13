@@ -62,9 +62,7 @@ const Footer = () => {
           <div>
             <h3 className="footer-title">Contact Us</h3>
             <ul className="space-y-3 text-gray-400">
-              <li>123 Business Street</li>
-              <li>Okla States, 12345</li>
-              <li>+1 234 567 8900</li>
+              <li>+44 751 6523 050</li>
               <li>info@greenrootstrading.com</li>
             </ul>
           </div>

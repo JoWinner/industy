@@ -6,7 +6,7 @@ const features = [
   {
     icon: Shield,
     title: "Quality Assurance",
-    description: "Rigorous testing and quality control measures ensure premium cocoa beans.",
+    description: "Rigorous testing and quality control measures ensure premium cash crops.",
   },
   {
     icon: Leaf,

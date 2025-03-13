@@ -4,7 +4,7 @@ import Image from "next/image";
 const processes = [
   {
     title: "Sourcing",
-    description: "We carefully select cocoa beans from sustainable farms, ensuring quality from the source.",
+    description: "We carefully select cash crops from sustainable farms, ensuring quality from the source.",
     image: "/images/sourcing.webp"
   },
   {

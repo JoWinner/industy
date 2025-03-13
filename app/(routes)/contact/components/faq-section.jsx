@@ -5,8 +5,8 @@ import { Reveal } from "@/lib/Reveal";
 
 const faqs = [
   {
-    question: "What types of cocoa beans do you supply?",
-    answer: "We supply premium quality cocoa beans including Forastero, Criollo, and Trinitario varieties. All our beans are sourced from sustainable farms and undergo strict quality control."
+    question: "What types of cash crops do you supply?",
+    answer: "We supply premium quality cash crops including Forastero, Criollo, and Trinitario varieties. All our beans are sourced from sustainable farms and undergo strict quality control."
   },
   {
     question: "What are your minimum order quantities?",
@@ -14,11 +14,11 @@ const faqs = [
   },
   {
     question: "Do you provide samples before bulk orders?",
-    answer: "Yes, we provide samples to qualified buyers. This allows you to assess the quality of our cocoa beans before placing larger orders."
+    answer: "Yes, we provide samples to qualified buyers. This allows you to assess the quality of our cash crops before placing larger orders."
   },
   {
     question: "What certifications do your cash crops have?",
-    answer: "Our cocoa beans are certified by various international standards including Fair Trade, Organic, and Rainforest Alliance. We can provide specific certification details upon request."
+    answer: "Our cash crops are certified by various international standards including Fair Trade, Organic, and Rainforest Alliance. We can provide specific certification details upon request."
   },
   {
     question: "What are your shipping terms?",

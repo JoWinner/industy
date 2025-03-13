@@ -6,8 +6,8 @@ import Script from 'next/script';
 const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Coco Site",
-  description: "Ultra classy Coco page",
+  title: "Greenroots Trading",
+  description: "Your best cash crops supplier page",
 };
 
 export default function RootLayout({ children }) {

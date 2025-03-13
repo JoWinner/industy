@@ -1,21 +1,77 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, Loader2 } from "lucide-react";
 
 const statusOptions = [
-  { value: "DEPARTED_PORT", label: "Departed Port" },
-  { value: "CUSTOMS_CLEARANCE", label: "Customs Clearance" },
-  { value: "ARRIVED_PORT", label: "Arrived at Port" },
-  { value: "PICKED_UP", label: "Shipment Picked Up" }
+  { 
+    value: "DEPARTED_PORT", 
+    label: "Departed Port",
+    description: "Shipment has departed from port"
+  },
+  { 
+    value: "CUSTOMS_CLEARANCE", 
+    label: "Customs Clearance",
+    description: "Shipment is undergoing customs clearance"
+  },
+  { 
+    value: "ARRIVED_PORT", 
+    label: "Arrived at Port",
+    description: "Shipment has arrived at port"
+  },
+  { 
+    value: "PICKED_UP", 
+    label: "Shipment Picked Up",
+    description: "Shipment has been picked up"
+  }
 ];
 
 const UpdateStatusModal = ({ isOpen, onClose, shipment, onSubmit }) => {
   const [formData, setFormData] = useState({
     status: "",
     location: "",
+    portId: "",
+    country: "",
     description: ""
   });
+  const [ports, setPorts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchPorts();
+    }
+  }, [isOpen]);
+
+  const fetchPorts = async () => {
+    try {
+      const response = await fetch("/api/ports");
+      const data = await response.json();
+      setPorts(data);
+    } catch (error) {
+      console.error("Error fetching ports:", error);
+    }
+  };
+
+  const handleStatusChange = (status) => {
+    const selectedStatus = statusOptions.find(option => option.value === status);
+    setFormData(prev => ({
+      ...prev,
+      status,
+      description: selectedStatus?.description || ""
+    }));
+  };
+
+  const handlePortChange = (portId) => {
+    const selectedPort = ports.find(port => port.id === portId);
+    if (selectedPort) {
+      setFormData(prev => ({
+        ...prev,
+        portId,
+        location: selectedPort.name,
+        country: selectedPort.country
+      }));
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +111,7 @@ const UpdateStatusModal = ({ isOpen, onClose, shipment, onSubmit }) => {
             <label className="block text-sm font-medium text-gray-700">Status</label>
             <select
               value={formData.status}
-              onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+              onChange={(e) => handleStatusChange(e.target.value)}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
               required
             >
@@ -63,6 +119,23 @@ const UpdateStatusModal = ({ isOpen, onClose, shipment, onSubmit }) => {
               {statusOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Port</label>
+            <select
+              value={formData.portId}
+              onChange={(e) => handlePortChange(e.target.value)}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Select Port</option>
+              {ports.map((port) => (
+                <option key={port.id} value={port.id}>
+                  {port.name}, {port.country}
                 </option>
               ))}
             </select>
@@ -80,12 +153,24 @@ const UpdateStatusModal = ({ isOpen, onClose, shipment, onSubmit }) => {
           </div>
 
           <div>
+            <label className="block text-sm font-medium text-gray-700">Country</label>
+            <input
+              type="text"
+              value={formData.country}
+              onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+
+          <div>
             <label className="block text-sm font-medium text-gray-700">Description</label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
               rows={3}
+              required
             />
           </div>
 

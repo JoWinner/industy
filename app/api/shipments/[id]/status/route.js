@@ -5,13 +5,6 @@ import { authOptions } from "../../../auth/[...nextauth]/route";
 
 const prisma = new PrismaClient();
 
-const STATUS_DESCRIPTIONS = {
-  DEPARTED_PORT: "Shipment has departed from port",
-  CUSTOMS_CLEARANCE: "Shipment is undergoing customs clearance",
-  ARRIVED_PORT: "Shipment has arrived at port",
-  PICKED_UP: "Shipment has been picked up"
-};
-
 export async function POST(req, { params }) {
   try {
     const session = await getServerSession(authOptions);
@@ -23,12 +16,16 @@ export async function POST(req, { params }) {
     }
 
     const { id } = params;
-    const { status, location, description } = await req.json();
+    const { status, location, country, description, portId } = await req.json();
 
-    // Validate status
-    if (!Object.keys(STATUS_DESCRIPTIONS).includes(status)) {
+    // Validate port exists
+    const port = await prisma.port.findUnique({
+      where: { id: portId }
+    });
+
+    if (!port) {
       return NextResponse.json(
-        { error: "Invalid status" },
+        { error: "Invalid port selection" },
         { status: 400 }
       );
     }
@@ -38,15 +35,18 @@ export async function POST(req, { params }) {
       data: {
         status,
         location,
-        description: description || STATUS_DESCRIPTIONS[status],
+        description,
         shipmentId: id
       }
     });
 
-    // Update shipment status
+    // Update shipment status and current location
     await prisma.shipment.update({
       where: { id },
-      data: { status }
+      data: { 
+        status,
+        currentLocation: `${location}, ${country}`
+      }
     });
 
     // Get updated shipment with all related data
