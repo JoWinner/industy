@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react"; // Add Suspense
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
 
-const LoginPage = () => {
+// Create a separate component for the login form
+const LoginForm = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [error, setError] = useState("");
@@ -29,9 +30,11 @@ const LoginPage = () => {
       });
 
       if (result?.error) {
-        setError(result.error === "Unauthorized access" 
-          ? "Only administrators can access this area" 
-          : "Invalid email or password");
+        setError(
+          result.error === "Unauthorized access"
+            ? "Only administrators can access this area"
+            : "Invalid email or password"
+        );
       } else {
         router.push(callbackUrl);
       }
@@ -61,7 +64,10 @@ const LoginPage = () => {
           )}
           <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email address
               </label>
               <input
@@ -70,12 +76,17 @@ const LoginPage = () => {
                 type="email"
                 required
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <input
@@ -84,7 +95,9 @@ const LoginPage = () => {
                 type="password"
                 required
                 value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
               />
             </div>
@@ -117,6 +130,21 @@ const LoginPage = () => {
         </form>
       </div>
     </div>
+  );
+};
+
+// Main page component with Suspense
+const LoginPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader2 className="w-6 h-6 animate-spin" />
+        </div>
+      }
+    >
+      <LoginForm />
+    </Suspense>
   );
 };
 
