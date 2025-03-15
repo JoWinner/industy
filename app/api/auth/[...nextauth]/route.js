@@ -11,7 +11,7 @@ export const authOptions = {
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
@@ -20,8 +20,8 @@ export const authOptions = {
 
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email
-          }
+            email: credentials.email,
+          },
         });
 
         if (!user || !user.password) {
@@ -46,22 +46,28 @@ export const authOptions = {
           id: user.id,
           email: user.email,
           name: user.name,
-          role: user.role
+          role: user.role,
         };
-      }
-    })
+      },
+    }),
   ],
   pages: {
     signIn: "/admin/login",
     error: "/admin/login",
-    signOut: "/admin/login"
+    signOut: "/admin/login",
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session }) {
       if (user) {
         token.role = user.role;
         token.id = user.id;
       }
+
+      // Handle session updates
+      if (trigger === "update" && session) {
+        return { ...token, ...session.user };
+      }
+
       return token;
     },
     async session({ session, token }) {
@@ -69,15 +75,22 @@ export const authOptions = {
         session.user.role = token.role;
         session.user.id = token.id;
       }
+
+      // Add timestamp for session tracking
+      session.lastAccessed = Date.now();
       return session;
-    }
+    },
   },
   session: {
     strategy: "jwt",
-    maxAge: 24 * 60 * 60 // 24 hours
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60, // 24 hours
   },
-  secret: process.env.NEXTAUTH_SECRET
+  jwt: {
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };

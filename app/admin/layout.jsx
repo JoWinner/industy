@@ -8,15 +8,21 @@ import { Loader2 } from "lucide-react";
 export default function AdminLayout({ children }) {
   const router = useRouter();
   const pathname = usePathname();
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/admin/login");
+    },
+  });
 
   useEffect(() => {
-    if (status === "unauthenticated" && pathname !== "/admin/login") {
-      router.push("/admin/login");
-    } else if (session?.user?.role !== "ADMIN" && pathname !== "/admin/login") {
-      router.push("/"); // Redirect non-admin users to home
+    // Handle session expiry and role check
+    if (status === "authenticated") {
+      if (!session?.user?.role || session.user.role !== "ADMIN") {
+        router.push("/");
+      }
     }
-  }, [session, status, router, pathname]);
+  }, [session, status, router]);
 
   // Don't show loading state on login page
   if (pathname === "/admin/login") {
@@ -38,9 +44,7 @@ export default function AdminLayout({ children }) {
       <div className="flex h-screen bg-gray-100">
         <AdminSidebar />
         <main className="flex-1 overflow-y-auto">
-          <div className="container mx-auto px-6 py-8">
-            {children}
-          </div>
+          <div className="container mx-auto px-6 py-8">{children}</div>
         </main>
       </div>
     );
