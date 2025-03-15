@@ -4,7 +4,7 @@ const timelineEvents = [
   {
     year: "2015",
     title: "Company Foundation",
-    description: "Greenroots Trading Company Ltd was established with a vision to revolutionize cash crop trading.",
+    description: "Greenroots Trading Company was established with a vision to revolutionize cash crop trading.",
   },
   {
     year: "2017",
