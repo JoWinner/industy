@@ -7,7 +7,7 @@ const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Greenroots Trading",
-  description: "Your best cash crops supplier page",
+  description: "Your best cash crops supplier",
 };
 
 export default function RootLayout({ children }) {
