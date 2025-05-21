@@ -57,7 +57,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="/terms-or-service" className="footer-link">
-                  Privacy Policy
+                  Terms of Service
                 </Link>
               </li>
             </ul>
@@ -70,6 +70,15 @@ const Footer = () => {
               <li>+44 751 6523 050</li>
               <li>info@greenrootstrading.org</li>
               <li>logistics@greenrootstrading.org</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="footer-title">Victoria</h3>
+            <ul className="space-y-1 text-gray-400">
+              <li>6 Crozier Ct McKinnon</li>
+              <li>Victoria 3204</li>
+              <li>Australia</li>
             </ul>
           </div>
 
