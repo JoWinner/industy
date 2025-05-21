@@ -67,7 +67,6 @@ const Footer = () => {
           <div>
             <h3 className="footer-title">Contact Us</h3>
             <ul className="space-y-3 text-gray-400">
-              <li>+44 751 6523 050</li>
               <li>info@greenrootstrading.org</li>
               <li>logistics@greenrootstrading.org</li>
             </ul>
