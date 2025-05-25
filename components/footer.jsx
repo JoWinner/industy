@@ -73,7 +73,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="footer-title">Victoria</h3>
+            <h3 className="footer-title">Locate Us</h3>
             <ul className="space-y-1 text-gray-400">
               <li>6 Crozier Ct McKinnon</li>
               <li>Victoria 3204</li>

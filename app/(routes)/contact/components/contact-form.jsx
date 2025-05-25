@@ -62,7 +62,7 @@ const ContactForm = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Phone Number</h3>
-                <p className="text-gray-600">+44 751 6523 050</p>
+                <p className="text-gray-600">+61 2 3010 2171</p>
               </div>
             </div>
 
@@ -74,6 +74,20 @@ const ContactForm = () => {
                 <h3 className="text-xl font-semibold mb-2">Email Address</h3>
                 <p className="text-gray-600">info@greenrootstrading.com</p>
               </div>
+            </div>
+
+            <div className="flex items-start space-x-4">
+              <div className="bg-primary p-3 rounded-lg text-white">
+                <MapPin size={24} />
+              </div>
+              <div>
+            <h3 className="text-xl font-semibold mb-2">Address</h3>
+            <ul className="space-y-1 text-gray-600">
+              <li>6 Crozier Ct McKinnon</li>
+              <li>Victoria 3204</li>
+              <li>Australia</li>
+            </ul>
+          </div>
             </div>
           </div>
 
